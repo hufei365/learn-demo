@@ -11,5 +11,5 @@ var childProcess = fork('another-thread.js');
 childProcess.on('message', function(data){
     console.log(data);
 })
-
+console.log('IO.js  ------ process connect: ' , process.connect);
 console.log('end !!!');
