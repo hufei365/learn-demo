@@ -1,4 +1,4 @@
-console.log('argv : ', process.argv);
+console.log('argv : ', process.argv.slice(2));
 
 // if(process.argv[2]){
 //     console.log('-----------存在第三个参数-------------')
@@ -32,7 +32,6 @@ process.stdin.on('readable', () => {
     const chunk = process.stdin.read();
     if (chunk !== null) {
         process.stdout.write(`data: ${chunk}`);
-        process.stderr.write(`data: ${chunk}`);
     }
 });
 
@@ -41,9 +40,9 @@ process.stdin.on('end', () => {
 });
 
 // in 3 seconds, end input
-setTimeout(()=>{
-    process.stdin.emit('end');
-}, 3000);
+// setTimeout(()=>{
+//     process.stdin.emit('end');
+// }, 3000);
 
 
 
@@ -59,3 +58,10 @@ process.on('exit', function () {
 });
 
 // process.abort(); // 终止进程
+
+function command(cmd){
+    switch(cmd){
+        case 'date':
+            process.stdout.write('current date is ' + new Date());
+    }
+}
